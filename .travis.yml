@@ -1,0 +1,22 @@
+language: java
+
+sudo: false
+
+cache:
+  directories:
+  - $HOME/.mx/cache
+
+jdk: oraclejdk8
+
+install:
+- git clone https://github.com/graalvm/mx
+- export PATH=$PWD/mx:$PATH
+- git clone https://github.com/graalvm/truffleruby
+- cd truffleruby
+- echo MX_BINARY_SUITES=truffle >> mx.jruby/env
+- echo JAVA_HOME=$JAVA_HOME >> mx.jruby/env
+- mx build
+- rvm mount $PWD -n truffleruby
+- rvm use ext-truffleruby
+script:
+- true 
