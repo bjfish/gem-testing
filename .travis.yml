@@ -19,4 +19,4 @@ install:
 - rvm mount $PWD -n truffleruby
 - rvm use ext-truffleruby
 script:
-- true 
+- true; true 
